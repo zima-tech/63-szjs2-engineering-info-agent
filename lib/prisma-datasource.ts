@@ -50,7 +50,7 @@ function ensureVercelWritableDatabase(sourcePath: string) {
 }
 
 export function resolvePrismaDatasourceUrl() {
-  const databaseUrl = process.env.DATABASE_URL;
+  const databaseUrl = process.env.DATABASE_URL?.trim() || `${SQLITE_PREFIX}./dev.db`;
 
   if (!databaseUrl?.startsWith(SQLITE_PREFIX)) {
     return databaseUrl;
